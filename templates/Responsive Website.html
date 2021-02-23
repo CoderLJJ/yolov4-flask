@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>SemiTransparent Glass Website UI Design</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins',sans-serif;
+        }
+        section{
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        header{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 40px 100px;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        header .logo{
+            position: relative;
+            font-size: 2em;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: 700;
+            text-decoration: none;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+            transition: 0.5s;
+        }
+        header .toggle{
+            position: relative;
+            width: 40px;
+            height: 40px;
+            background: url(lin.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            background-size: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        header .toggle.active{
+            background: url(lin.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            background-size: 25px;
+        }
+        header .toggle:before{
+            position: absolute;
+            content: 'Menu';
+            right: 45px;
+            text-transform: uppercase;
+            color: #fff;
+            letter-spacing: 2px;
+            font-size: 14px;
+            padding: 2px 5px;
+            background: #fff;
+            color: #111;
+        }
+        section video{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <header>
+            <a href="#" class="logo">Water.</a>
+            <div class="toggle active" onclick="menuToggle();"></div>
+        </header>
+        <video src="../static/linj.mp4" autoplay muted loop></video>
+    </section>
+    <script type="text/javascript">
+        function menuToggle() {
+            const toggleMenu=document.querySelector('.toggle');
+            toggleMenu.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

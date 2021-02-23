@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Curved & Colored Drop Shadow</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .box {
+            position: relative;
+            width: 100%;
+            height: 50vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .curved {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /*background: #fffa4e;*/
+        }
+
+        .curved .shadow {
+            position: relative;
+            width: 600px;
+            height: 300px;
+            z-index: 2;
+        }
+
+        .curved .shadow div {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            /*background: #4ac4ff;*/
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /*border: 10px solid #fff;*/
+            color: #fff;
+            font-size: 3em;
+            z-index: 2;
+        }
+
+        .colored .shadow {
+            position: relative;
+            width: 600px;
+            height: 300px;
+            /*background: #ff4370;*/
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /*color: #fff;*/
+            font-size: 3em;
+        }
+
+        .colored .shadow::before {
+            position: absolute;
+            left: 5%;
+            right: 5%;
+            bottom: -15px;
+            height: 40px;
+            /*background: #ff4370;*/
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+
+        video {
+            position: fixed;
+            right: 0px;
+            bottom: 0px;
+            min-width: 100%;
+            min-height: 100%;
+            height: auto;
+            width: auto;
+            /*加滤镜*/
+            /*filter: blur(15px); //背景模糊设置 */
+            /*-webkit-filter: grayscale(100%);*/
+            /*filter:grayscale(100%); //背景灰度设置*/
+            z-index: -11
+        }
+
+        source {
+            min-width: 100%;
+            min-height: 100%;
+            height: auto;
+            width: auto;
+        }
+
+        form {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        p {
+            position: absolute;
+            left: 50%;
+            top: 5%;
+            transform: translate(-50%, -50%);
+            font-size: 30px;
+            color: #46A3FF;
+        }
+
+        span {
+            position: absolute;
+            left: 50%;
+            top: 10%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+            color: #46A3FF;
+        }
+
+        /*a  upload */
+        .a-upload {
+            padding: 4px 10px;
+            height: 30px;
+            line-height: 20px;
+            position: relative;
+            cursor: pointer;
+            color: #888;
+            background: #fafafa;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+            display: inline-block;
+            *display: inline;
+            *zoom: 1
+        }
+
+        .a-upload input {
+            position: absolute;
+            font-size: 200px;
+            right: 0;
+            top: 0;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            cursor: pointer
+        }
+
+        .a-upload:hover {
+            color: #444;
+            background: #eee;
+            border-color: #ccc;
+            text-decoration: none
+        }
+
+        .file {
+            position: relative;
+            display: inline-block;
+            background: #D0EEFF;
+            border: 1px solid #99D3F5;
+            border-radius: 4px;
+            padding: 4px 12px;
+            overflow: hidden;
+            color: #1E88C7;
+            text-decoration: none;
+            text-indent: 0;
+            line-height: 20px;
+        }
+
+        .file input {
+            position: absolute;
+            font-size: 200px;
+            right: 0;
+            top: 0%;
+            top: 0%;
+            opacity: 0;
+        }
+
+        .file:hover {
+            background: #AADFFD;
+            border-color: #78C3F3;
+            color: #004974;
+            text-decoration: none;
+        }
+
+        h1 {
+            position: absolute;
+            left: 2%;
+            top: 0;
+            transform: translate(50%, 50%);
+            font-size: 30px;
+            color: #46A3FF;
+            text-align: center;
+
+        }
+
+        .lin {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 1000px;
+            height: 1000px;
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+<video id="v1" autoplay loop muted>
+    <source src="../static/linj.mp4"/>
+</video>
+<div class="lin">
+    <h1>Yolov4-tf2图片流目标检测演示Demo</h1>
+    <div class="container">
+        <div class="box curved">
+            <div class="shadow">
+                <div><img style="width:600px;height: 300px" src="data:;base64,{{ upload_path }}"></div>
+            </div>
+        </div>
+        <form action="/success" method="post" enctype="multipart/form-data">
+            <a href="javascript:;" class="a-upload">
+                <input type="file" name="file">点击上传图片
+            </a>
+            <a href="javascript:;" class="file">
+                <input type="submit" value="上传" style="">上传
+            </a>
+        </form>
+        <br>
+        <div class="box colored">
+            <div class="shadow">
+                <div><img style="width:600px;height: 300px" src="data:;base64,{{ img_stream }}"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../static/vanilla-tilt.js"></script>
+<script type="text/javascript">
+	VanillaTilt.init(document.querySelectorAll(".shadow"), {
+		max: 25,
+		speed: 400,
+        glare:true,
+        "max-glare":0.2,
+	});
+	</script>
+</body>
+</html>

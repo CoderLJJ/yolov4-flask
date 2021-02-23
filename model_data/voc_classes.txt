@@ -1,0 +1,5 @@
+car
+people
+face
+face_mask
+yanjing

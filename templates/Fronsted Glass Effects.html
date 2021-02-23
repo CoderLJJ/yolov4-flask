@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Frosted Effects</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url("lin.jpg") no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        .frosted{
+            height: 400px;
+            width: 400px;
+            background: inherit;
+            /*background: rgba(0,0,0,.7);*/
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .frosted::after{
+            z-index: -1;
+            content: '';
+            position: absolute;
+            /*top: 0;*/
+            /*bottom: 0;*/
+            /*right: 0;*/
+            /*left: 0;*/
+            top: -10px;
+            bottom: -10px;
+            right: -10px;
+            left: -10px;
+            background: inherit;
+            /*background: rgba(255,255,255,.5);*/
+            box-shadow: inset 0 0 2000px rgba(255,255,255,.5);
+            /*filter: blur(10px);*/
+            filter: blur(5px);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="frosted">
+        <h3>I am Frosted</h3>
+    </div>
+</div>
+
+</body>
+</html>
